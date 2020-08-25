@@ -10,9 +10,9 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - pytest
   - pytest --pylint
-  - pytest
+  - pytest --pycodestyle
+  - pytest --pydocstyle
 
 after_script:
   -
