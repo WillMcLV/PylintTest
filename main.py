@@ -1,4 +1,4 @@
-"""This module is an attempt to practice class in python.""
+"""This module is an attempt to practise class in python."""
 
 
 class Dog:
@@ -20,4 +20,4 @@ class Dog:
         print(f"{self.dog_age} rolled over!")
 
 
-my_dog = Dog("Maxwell", 6))
+my_dog = Dog("Maxwell", 6)
