@@ -8,7 +8,7 @@ class Dog:
         """Initialize name and age attributes."""
         self.dog_name = name
         self.dog_age = age
-        self.name = "Rambo"
+        self.name = "Atom"
         self.age = 12
 
     def sit(self):

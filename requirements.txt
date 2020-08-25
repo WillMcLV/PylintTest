@@ -1,5 +1,4 @@
 pytest
 pytest-pylint==0.16.1
-pytest-flake8==1.0.5
 pytest-pycodestyle==2.2.0
 pytest-pydocstyle==2.2.0
