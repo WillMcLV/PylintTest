@@ -1,3 +1,6 @@
+"""This module is an attempt to practice class in python."""
+
+
 class Dog:
     """A simple attempt to model a dog."""
 
