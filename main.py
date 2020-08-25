@@ -21,4 +21,3 @@ class Dog:
 
 
 my_dog = Dog("Maxwell", 6)
-
