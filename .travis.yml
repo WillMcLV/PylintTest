@@ -13,6 +13,3 @@ script:
   - pytest --pylint
   - pytest --pycodestyle
   - pytest --pydocstyle
-
-after_script:
-  -
