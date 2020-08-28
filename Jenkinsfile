@@ -6,7 +6,7 @@ python:
   - "3.8"
 
 install:
-  - pip3 install --upgrade pip
+  - pip3 --upgrade pip
   - pip install -r requirements.txt
 
 script:
