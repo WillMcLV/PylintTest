@@ -1,15 +1,15 @@
 pipeline {
-  agent any
+  agent { docker { image 'python:3.8.0' } }
   stages {
+    stage('build') {
+      steps {
+        sh 'pip install -r requirements.txt'
+      }
+    }
     stage('test') {
-     agent {
-          docker {
-               image 'qnib/pytest'
-          }
-     }
-     steps {
-          sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt && python pylint.py'
-     }
-}
+      steps {
+        sh 'pylintt'
+      }   
+    }
   }
 }
