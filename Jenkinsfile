@@ -43,6 +43,8 @@ pipeline {
             post {
                 always {
                     junit 'pylint.xml'
+                    junit 'pycodestyle.xml'
+                    junit 'pydocstyle.xml'
                 }
             }
         }
