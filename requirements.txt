@@ -2,3 +2,4 @@ pytest
 pytest-pycodestyle==2.2.0
 pytest-pydocstyle==2.2.0
 pylint
+flake8
