@@ -1,11 +1,4 @@
-FROM python:3.8
-
-COPY requirements.txt /app/requirements.txt
-WORKDIR /app
-
-# Installs pip requirements and copy entire app over!
-RUN pip install -r requirements.txt
-RUN pip install termcolor
-COPY . /app
-
-ENV DISPLAY=:99
+FROM jenkins:latest
+USER root
+RUN apt-get update
+RUN apt-get install -y python-pip
