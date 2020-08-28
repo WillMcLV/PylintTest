@@ -13,8 +13,24 @@ pipeline {
     }
     
     stages {
+        stage('Initialize') {
+            agent { dockerfile true }
+            steps {
+                script {
+                    def dockerHome = tool 'myDocker'
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                }
+            }
+        }
+        stage('Build') {
+            agent { dockerfile true }
+            steps {
+                echo 'Building..'
+                sh 'python --version'
+            }
+        }
         stage('Test') {
-            agent none
+            agent { dockerfile true }
             steps {
                 echo 'Testing..'
                 // Run pylint
@@ -28,6 +44,17 @@ pipeline {
                 always {
                     junit 'pylint.xml'
                 }
+            }
+        }
+        stage('Deploy') {
+            echo 'Deploying....'
+            // Push to dockerhub image repository with tags per mergeid/featurebranch or etc.
+            script{
+                dockerImg = docker.build repo+":$BUILD_NUMBER"
+                docker.withRegistry( '', registryCredential ) {
+                    dockerImg.push()
+                }
+                sh 'docker rmi $repo:BUILD_NUMBER'
             }
         }
     }
