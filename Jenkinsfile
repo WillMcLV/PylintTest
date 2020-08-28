@@ -1,22 +1,13 @@
-pipeline {
-    agent any
-    
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh 'pylint --junitxml=pylint.xml'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
-}
+language: python
+
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+
+install:
+  - pip3 install --upgrade pip
+  - pip install -r requirements.txt
+
+script:
+  - pytest --pylint
