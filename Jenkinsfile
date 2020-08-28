@@ -1,26 +1,12 @@
-pipeline {
-  agent any
-    
-  tools {nodejs "node"}
-    
-  stages {
-        
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/WillMcLV/PylintTest'
-      }
-    }
-        
-    stage('Install dependencies') {
-      steps {
-        sh 'npm install'
-      }
-    }
-     
-    stage('Test') {
-      steps {
-         sh 'npm test'
-      }
-    }      
+node() {
+  stage('checkout') {
+    deleteDir()
+    checkout scm
+  }
+  stage('build') {
+    sh "behave -i test.feature --junit"
+  }
+  stage('publish') {
+    junit 'reports/*.xml'
   }
 }
