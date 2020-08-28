@@ -7,7 +7,7 @@ python:
 
 install:
   - pip3
-  - pip install -r requirements.txt
+  - pip -r requirements.txt
 
 script:
   - pytest --pylint
