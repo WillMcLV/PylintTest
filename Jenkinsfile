@@ -47,15 +47,17 @@ pipeline {
             }
         }
         stage('Deploy') {
-            echo 'Deploying....'
-            // Push to dockerhub image repository with tags per mergeid/featurebranch or etc.
-            script{
-                dockerImg = docker.build repo+":$BUILD_NUMBER"
-                docker.withRegistry( '', registryCredential ) {
-                    dockerImg.push()
+            steps {
+                echo 'Deploying....'
+                // Push to dockerhub image repository with tags per mergeid/featurebranch or etc.
+                script{
+                    dockerImg = docker.build repo+":$BUILD_NUMBER"
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImg.push()
+                    }
+                    sh 'docker rmi $repo:BUILD_NUMBER'
                 }
-                sh 'docker rmi $repo:BUILD_NUMBER'
-            }
+            }                
         }
     }
 }
