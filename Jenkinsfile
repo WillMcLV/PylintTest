@@ -4,7 +4,7 @@ node() {
     checkout scm
   }
   stage('build') {
-    sh "pylint.py"
+    sh "python pylint.py"
   }
   stage('publish') {
     junit 'reports/*.xml'
