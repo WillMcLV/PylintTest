@@ -1,0 +1,23 @@
+{
+ “name”: “node-app”,
+ “description”: “hello jenkins test app”,
+ “version”: “0.0.1”,
+ “private”: true,
+ "scripts": {
+    "test": "karma start",
+    "pylint": "pylint",
+    "pycodestyle": "pycodestyle",
+    "pydocstyle": "pydocstyle"
+ },
+ “dependencies”: {
+    “karma-cli”: "*",
+    "phantomjs": "*",
+    "karma-jasmine": "*",
+    "karma-phantomjs-launcher": "*",
+    "karma-junit-reporter": "*",
+    "karma-chrome-launcher": "*",
+    "pylint": "*"
+    "pycodestyle": "*"
+    "pydocstyle": "*"
+ }
+}
