@@ -1,12 +1,13 @@
 FROM python:3
 
-WORKDIR /usr/src/app
+WORKDIR /home/willm/.local/lib/python3.6
 
 COPY requirements.txt ./
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
+    pip install pylint
 
 COPY . .
 
-CMD [ "python", "./your-daemon-or-script.py" ]
+CMD [ "python", "./pylint.py" ]
