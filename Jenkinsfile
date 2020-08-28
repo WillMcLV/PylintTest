@@ -4,7 +4,7 @@ node() {
     checkout scm
   }
   stage('build') {
-    sh "pylint"
+    sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt && python pylint.py'
   }
   stage('publish') {
     junit 'reports/*.xml'
