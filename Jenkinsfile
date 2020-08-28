@@ -1,13 +1,11 @@
-language: python
-
-python:
-  - "3.6"
-  - "3.7"
-  - "3.8"
-
-install:
-  - pip3
-  - pip -r requirements.txt
-
-script:
-  - pytest --pylint
+node() {
+  stage('checkout') {
+    deleteDir()
+    checkout scm
+  }
+  stage('build') {
+    sh "pytest --pylint"
+  }
+  stage('publish') {
+    junit 'reports/*.xml'
+  }
