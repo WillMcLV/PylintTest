@@ -1,15 +1,12 @@
-pipeline {
-  agent { docker { image 'python:3.8.0' } }
-  stages {
-    stage('build') {
-      steps {
-        sh 'pip install -r requirements.txt'
-      }
-    }
-    stage('test') {
-      steps {
-        sh 'pylintt'
-      }   
-    }
+node() {
+  stage('checkout') {
+    deleteDir()
+    checkout scm
+  }
+  stage('build') {
+    sh "pytest --pylint"
+  }
+  stage('publish') {
+    junit 'reports/*.xml'
   }
 }
