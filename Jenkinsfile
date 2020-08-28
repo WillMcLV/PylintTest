@@ -2,35 +2,22 @@
 pipeline {
     // Set up the docker agent Jenkins will run on
     // agent { docker { image 'python:3.8' } }
-    agent none
-    environment {
-        VERSION_NO         = '1.0'
-        // repo User/RepoName
-        repo               = "WillMcLV/PylintTest"
-        registryCredential = 'dockerhub'
-        dockerImg          = ''
-        
-    }
+    agent any
     
     stages {
         stage('Initialize') {
-            agent { dockerfile true }
             steps {
                 script {
-                    def dockerHome = tool 'myDocker'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
-                }
+                    echo 'Building..'
             }
         }
         stage('Build') {
-            agent { dockerfile true }
             steps {
                 echo 'Building..'
                 sh 'python --version'
             }
         }
         stage('Test') {
-            agent { dockerfile true }
             steps {
                 echo 'Testing..'
                 // Run pylint
@@ -49,13 +36,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                // Push to dockerhub image repository with tags per mergeid/featurebranch or etc.
-                script{
-                    dockerImg = docker.build repo+":$BUILD_NUMBER"
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImg.push()
-                    }
-                    sh 'docker rmi $repo:BUILD_NUMBER'
+                // Push to dockerhub image repository with tags per mergeid/featurebranch or etc
                 }
             }                
         }
