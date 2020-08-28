@@ -9,3 +9,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN pip3 install nibabel pydicom matplotlib pillow
 RUN pip3 install med2image
+RUN pip3 install pylint
+RUN pip3 install pycodestyle
+RUN pip3 install pydocstyle
