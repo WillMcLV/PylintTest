@@ -13,22 +13,6 @@ pipeline {
     }
     
     stages {
-        stage('Initialize') {
-            agent { dockerfile true }
-            steps {
-                script {
-                    def dockerHome = tool 'myDocker'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
-                }
-            }
-        }
-        stage('Build') {
-            agent { dockerfile true }
-            steps {
-                echo 'Building..'
-                sh 'python --version'
-            }
-        }
         stage('Test') {
             agent { dockerfile true }
             steps {
