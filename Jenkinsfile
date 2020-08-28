@@ -63,22 +63,3 @@ pipeline {
         }
     }
 }
-
-// Scripted Pipeline
-// node {
-//      Stage 'Checkout'
-//          echo 'Checkout Stage'
-//          checkout scm
-
-//      Stage 'Build'
-//          echo 'Building Stage'
-//          sh 'python --version'
-
-//      Stage 'Test'
-//          echo 'Test Stage'
-//          //Pylint here
-
-//      Stage 'Deploy'
-//          echo 'Test Stage'
-
-// }
