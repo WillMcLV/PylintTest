@@ -14,7 +14,7 @@ pipeline {
     
     stages {
         stage('Test') {
-            agent { dockerfile true }
+            agent none
             steps {
                 echo 'Testing..'
                 // Run pylint
