@@ -1,15 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
-      steps {
-        echo 'Build..'
-      }
-    }
     stage('test') {
-      steps {
-        sh 'pytest --pylint'
-      }   
-    }
+     agent {
+          docker {
+               image 'qnib/pytest'
+          }
+     }
+     steps {
+          sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt && python pylint.py'
+     }
+}
   }
 }
