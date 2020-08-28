@@ -1,0 +1,5 @@
+Jenkins CI Linter Setup
+
+1. If running Jenkins off personal machine, install Docker
+2. If running off personal machine, install Jenkins through Docker
+3. 
