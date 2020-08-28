@@ -4,7 +4,7 @@ node() {
     checkout scm
   }
   stage('build') {
-    sh "behave -i test.feature --junit"
+    sh "pylint"
   }
   stage('publish') {
     junit 'reports/*.xml'
